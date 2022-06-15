@@ -1,0 +1,905 @@
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+/* importing fonts for our html*/
+
+body{
+
+	background-image:linear-gradient(to bottom right, rgba(161, 19, 161, 0.767), rgb(201, 125, 201, 0.8));
+}
+
+.title{
+  text-align: center;
+  color: #f6f7c5;
+  font-family: 'Righteous', cursive;
+}
+
+/*with wrapper we just have starting margin */
+
+.wrapper{
+  margin: 10px;
+
+}
+
+/*we start here with the flex display, we flex wrap for it to handle extra elements
+which is usefull in media query, the row to order the columns below (also width for all) */
+
+/* under the row we have the flex and column diection */
+
+/* flex-basis for the initial width of the columns */
+
+
+/* on a whim we decided to have a special type of layout, 3 columns that are togheter while 
+more than 800px and two with one below while with samller screen we start with
+for big screen we concentrate all in ROW, 2 containers/1, with flex items*/
+
+.contained {
+	display: flex;
+	flex-direction: row;
+
+}
+
+/* for the 2 columns for the buttons, we use row for now, and set the flex for their
+summed space*/
+.flex-col {
+	display: flex;
+	flex-direction: row;
+
+	flex: 70%; 
+}
+
+/* also, we need to define the singular spaces */
+.flex-col .flex-left {
+  
+	flex: 33%;
+  }
+  
+	
+.flex-col .flex-center{
+
+	flex: 33%;
+}
+
+
+/* ok so, this is the other container */
+.flex-long{
+	display: flex;
+
+	flex: 33%;
+}
+
+.flex-long .flex-right {
+
+	padding-top: 1em;
+	flex: 33%;
+}
+
+
+/* for smaller screen*/
+@media (max-width: 800px) {
+	
+	/* ok so,  we change the entire container into column*/
+	.contained {
+		flex-direction: column;
+		display: flex;
+	}
+
+	/* considering only 2 in a row we dont need flex */
+	.flex-col {
+		display: flex;
+		flex-direction: row;
+
+	}
+	
+	/* foor the flexes we just need the color, it will be 50% already */
+	.flex-col .flex-left {
+
+
+	}
+	
+	.flex-col .flex-center{
+
+
+	}
+
+	/* it seems we dont need to set flex-direction */
+	.flex-long{
+		display: flex;
+		flex-direction: column;
+
+
+	}
+
+	/*  */
+	.flex-long .flex-right {
+
+	}
+
+
+}
+
+/* we used the HTML to do this*/
+.texto{
+
+	margin: 15em 1.5em;
+	line-height: 1.58;
+	font-weight: lighter;
+}
+
+.texto h2{
+
+	margin-bottom: -2px;
+}
+
+/*this is only for the first paragraph and the margin */
+.contained + .texto{
+	margin-top: 6em;
+	font-family: 'Montagu Slab', serif;
+
+	font-weight: bold;
+	line-height: 1.58;
+	letter-spacing: .008em;
+}
+
+/*we standard the flex and center of bottons*/
+.secondo{
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 0.8em;
+}
+
+/*I will stop here ---------------------*/
+
+.more{
+  border: 2px rgba(161, 19, 161, 0.767) solid;
+
+  padding: 1em 3em;
+  
+  color: antiquewhite;
+  position: relative;
+  overflow: hidden;
+
+  background: purple;
+
+}
+
+/* after setting the button we set with the :after the second layer
+in this case no transformation */
+.more::after{
+  content: '';
+  width: 1.5em;
+  height: 8em;
+  background: yellow;
+  opacity: 30%;
+  transform: rotate(-45deg);
+
+
+  position: absolute;
+
+  top: -2em;
+  left: -2.6em;
+}
+
+/* here we put the transition and the changes and times */
+.more:hover:after{
+  left: 140%;
+  transition: all 600ms linear;
+   -webkit-transition: all 600ms cubic-bezier(0.3, 1, 0.2, 1);
+}
+
+
+
+
+/* the column-count divides the div and what affects one, affects the
+others divided in 3 */
+
+/*
+#shiny-shadow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150vh;
+    background: #1c2541;
+  }
+  
+  button {
+    background: #1c2541;
+    border: 2px solid white;
+    background: transparent;
+    text-transform: uppercase;
+    color: white;
+    padding: 15px 50px;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  span {
+    z-index: 20;  
+  }
+  
+  button:after {
+    content: '';
+      display: block;
+      position: absolute;
+      top: -36px;
+      left: -100px;
+      background: white;
+      width: 50px;
+      height: 125px;
+      opacity: 20%;
+      transform: rotate(-45deg);
+  }
+  
+  button:hover:after {
+    left: 120%;
+    transition: all 2600ms cubic-bezier(0.3, 1, 0.2, 1);
+     -webkit-transition: all 4600ms cubic-bezier(0.3, 1, 0.2, 1);
+  }
+
+*/
+
+
+/* so, to resume, we use the typical flex and justify for the column stuff*/
+
+
+
+/* here we have its position and all the button style
+also, we set the z-index to have the button text visible after
+the background effect, with the transition and all the normal button style */
+
+.vis{
+	position: relative;
+
+	background: pink;
+	border: 1px solid rgba(161, 19, 161, 0.767);
+
+	padding: 1em 3em;
+	color: rgba(161, 19, 161, 0.767);
+
+	z-index: 1;
+	overflow: hidden;
+  
+	text-align: center;
+	text-decoration: none;
+
+	transition: all 1s linear;
+
+}
+
+/*here we set up the color effect , no visible YET (height 0) but
+with position absolute (I think coz being :after it will follow the
+tag selector is after, position and transition ALSO, it seems that the
+tranform takes place away from the center and the left/top moves it just a little
+and the transform is more important*/
+
+.vis::after{
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+
+	height: 0%;
+	width: 150%;
+
+  	z-index: -1;
+
+	background: rgba(161, 19, 161, 0.767) ;
+	transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+
+	transition: all 1s ease 0s;
+}
+
+/* we use this hover for the non-special after effect / transition*/
+
+ .vis:hover{
+  color: pink;
+
+  border: 1px pink solid;
+}
+
+/* ok so, the transition will make the effect visible from the center and cover all */
+.vis:hover::after{
+  height: 250%;
+
+}
+
+/*so, here the second */
+
+.vis1{
+	position: relative;
+
+  	background: pink;
+  	border: 1px solid rgba(161, 19, 161, 0.767);
+
+	padding: 1em 3em;
+	color: rgba(161, 19, 161, 0.767);
+
+  	z-index: 1;
+  	overflow: hidden;
+  
+	text-align: center;
+	text-decoration: none;
+
+  	transition: all 1s linear;
+
+}
+
+/* the operation is the same, its a square existing, the only thing that changes
+its the rotate to get it open in the middle */
+
+.vis1::after{
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+
+	height: 0%;
+	width: 200%;
+
+  z-index: -1;
+
+	background: rgba(161, 19, 161, 0.767);
+
+	transform: translateY(-50%) translateX(-50%) rotate(90deg);
+
+	transition: all 1s ease 0s;
+}
+
+/* we use this hover for the non-special after effect / transition*/
+
+ .vis1:hover{
+  color: pink;
+  border: 1px pink solid;
+
+}
+
+/* ok so, the transition will make the effect visible from the center and cover all */
+.vis1:hover::after{
+  height: 350%;
+
+}
+
+/* ok so, this one is intersting, we put the typical translateY to have the color move
+from down, and we use the hover to move and the hover off to get it back and give the
+illusion of multiple boxes to be more precise, it starts from the bottom and then
+it closes o te top */
+
+.vis2{
+	position: relative;
+
+	background: pink;
+	border: 2px solid rgba(161, 19, 161, 0.767);
+
+	padding: 1em 3em;
+	color: rgba(161, 19, 161, 0.767);
+
+	z-index: 1;
+	overflow: hidden;
+  
+	text-align: center;
+	text-decoration: none;
+
+	transition: all 1s linear;
+
+}
+
+/* ok so,  this is the end frame, and sets where the box ends
+starting from 0 and setting the transition*/
+
+.vis2::after{
+	content: '';
+
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	height: 0px;
+	width: 150%;
+	z-index: -1;
+
+	background: rgba(161, 19, 161, 0.767);
+	transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+/* ok so, this is the  */
+
+.vis2:hover{
+	color: pink;
+	border: 1px pink solid;
+
+}
+
+/* this sets where the hover starts.... from the bottom 0% and doing so it covers the 
+.vis2:hover anyway, we set height 100% that then gets to 0px , the top: auto
+allows it to get the position*/
+.vis2:hover::after{
+  bottom: 0%;
+	top: auto;
+	height: 100%;
+
+}
+
+/* so, */
+
+
+.vis3{
+	position: relative;
+
+	background: pink;
+	border: 2px solid rgba(161, 19, 161, 0.767);
+
+	padding: 1em 3em;
+	color: rgba(161, 19, 161, 0.767);
+
+	z-index: 1;
+	overflow: hidden;
+  
+	text-align: center;
+	text-decoration: none;
+
+	transition: all 1s linear;
+
+}
+
+/* this is the after hover we will see only after the hover(considering its 0px
+now), to invert it we put the bottom =% to set the end of teh hover to be down*/
+
+.vis3::after{
+	content: '';
+
+	position: absolute;
+	left: 0%;
+	bottom: 0%;
+	height: 0px;
+	width: 100%;
+	z-index: -1;
+
+	background: rgba(161, 19, 161, 0.767);
+	transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+/* ok so, this is the  */
+
+.vis3:hover{
+	color: pink;
+	background-color: rgba(161, 19, 161);
+
+}
+
+/* here we inver the bottom=0% and top=auto to see the start, now it starts from the topperst
+while it finish whith all the bottom it has.... */
+.vis3:hover::after{
+	top: 0%;
+	bottom: auto;
+	height: 100%;
+
+}
+
+/* so, about the third*/
+
+.vis4{
+	position: relative;
+
+	background: pink;
+	border: 2px solid rgba(161, 19, 161, 0.767);
+
+	padding: 1em 3em;
+	color: rgba(161, 19, 161, 0.767);
+
+	z-index: 1;
+	overflow: hidden;
+  
+	text-align: center;
+	text-decoration: none;
+
+	transition: all 1s linear;
+
+}
+
+/* this is the after hover we will see only after the hover(considering its 0px
+now), to invert it we put the bottom =% to set the end of teh hover to be down
+and IN THIS CASE, we put right 0% to make the hover effect to the right*/
+
+.vis4::after{
+	content: '';
+
+	position: absolute;
+	right: 0%;
+	bottom: 0%;
+	height: 100px;
+	width: 0%;
+	z-index: -1;
+
+	background: rgba(161, 19, 161, 0.767);
+	transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+/* ok so, this is the  */
+
+.vis4:hover{
+	color: pink;
+	border: 1px pink solid;
+	background-color: rgba(161, 19, 161);
+
+}
+
+/* here we inver the bottom=0% and top=auto to see the start, now it starts from the topperst
+while it finish whith all the bottom it has.... */
+.vis4:hover::after{
+	left: 0%;
+	right: auto;
+	width: 100%;
+
+}
+
+/*-------*/
+
+.vis5{
+	position: relative;
+
+	background: pink;
+	border: 2px solid rgba(161, 19, 161, 0.767);
+
+	padding: 1em 3em;
+	color: rgba(161, 19, 161, 0.767);
+
+	z-index: 1;
+	overflow: hidden;
+  
+	text-align: center;
+	text-decoration: none;
+
+	transition: all 1s linear;
+
+}
+
+/* this is the after hover we will see only after the hover(considering its 0px
+now), to invert it we put the bottom =% to set the end of teh hover to be down
+and IN THIS CASE, we put right 0% to make the hover effect to the right*/
+
+.vis5::after{
+	content: '';
+
+	position: absolute;
+	left: 0%;
+	bottom: 0%;
+	height: 100%;
+	width: 0%;
+	z-index: -1;
+
+	background: rgba(161, 19, 161, 0.767);
+	transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+/* ok so, this is the  */
+
+.vis5:hover{
+	color: pink;
+	border: 1px pink solid;
+	background-color: rgba(161, 19, 161);
+
+}
+
+/* here we inver the bottom=0% and top=auto to see the start, now it starts from the topperst
+while it finish whith all the bottom it has.... */
+.vis5:hover::after{
+	right: 0%;
+	left: auto;
+	width: 100%;
+
+}
+
+/* its just a play with color*/
+.vis6{
+	color: pink;
+	background: rgba(161, 19, 161, 0.767);
+	transition: all 0.5s ease;
+	border: 3px solid pink;
+
+  	padding: 1em 3em;
+}
+
+.vis6:hover{
+	color: rgba(161, 19, 161, 0.767);
+	background: pink;
+	border: 3px solid rgba(161, 19, 161, 0.767);
+	transition: all 0.5s ease;
+}
+
+/* so, the hard part seems the border down being animated*/
+
+.vis7{
+	background: pink;
+	border: none;
+	color: rgba(161, 19, 161, 0.767);
+	transition: all 1s ease; 
+
+  	position: relative;
+  	padding: 1em 3em;
+}
+
+.vis7:hover{
+	background: rgba(161, 19, 161, 0.767);
+	color: pink;
+}
+
+/* we are gonna put the border effect in an after BUT IT wont be visible yet except
+when hover, if we want it to be in the bottom we put bottom=0*/
+
+.vis7::after{
+	position: absolute;
+	content: '';
+	width: 0;
+	bottom: 0;
+
+	right: 0;
+	height: 3px;
+	background: rgb(114, 7, 114);
+
+	transition: all 0.3s ease;
+}
+
+.vis7:hover::after{
+	transition: all 0.3s ease;
+	width: 100%;
+	left: 0;
+}
+
+/* so, the change is in how we handle the radiant-gradient (that is for circles)
+so, in the (we get the space organized, (0.50em and 0.25) with the colors, so
+after the () we set the center(?) and then the X and Y space between the centers, 
+with that we also have the number of dots considering the space*/
+
+.vis8{
+	font-weight: bolder;
+	color: rgb(124, 12, 124);
+	background: orange radial-gradient(circle, rgba(202, 26, 202, 0.767) 0.35em, pink 0.25em) center/ 1.5em 1.2em;
+	border: 3px solid rgba(161, 19, 161, 0.767);
+
+	transition: all 1s ease;
+  	padding: 1em 3em;
+}
+
+.vis8:hover{
+	font-weight: bolder;
+	color: rgba(161, 19, 161, 0.767);
+	background: radial-gradient(circle, pink 0.25em, rgba(161, 19, 161, 0.767) 0.45em) center/0.1em 0.1em;
+}
+
+
+/*------------------------------------*/
+
+/* this is the button, to melt into background, what is transform for?
+ok so, */
+
+
+/* so, it seems its gonna be with 2 layers before/after
+also, it seems that due to the big changes we have we have to divide the title in 2
+so, we have a standard button, we have to repeat the diaplay to justify*/
+
+.vis9{
+
+	color: purple;
+	background: pink;
+	border: 3px solid rgba(161, 19, 161, 0.767);
+
+  	overflow: hidden;
+  	position: relative;
+	display: flex;
+	justify-content: center;
+  	align-items: center;
+  	padding: 1.5em 4em;
+}
+
+/*so, it seems we need a tag only for the text, considering how it has to remain visible
+after the :before/:after, also position absolute to exist with the others */
+
+.vis9 a{
+	position: absolute;
+	z-index: 2;
+}
+
+/*so, we set up 2 layers at the same time...., we neeeed the position:absolute
+for the starting 0 dimensions to remain that before the hover 
+the width/height needs to be set for the center of teh effect to work (and to cover the button)
+and we also need to center using the left.... with also the margin to be needed
+we also have the border to set teh effect to be circled, this is kinda messay but
+the dalay for example, is gonna work only for the :before for example AND only on the 
+hover off */
+.vis9::before,
+.vis9::after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -7em;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+
+	border-radius: 50%;
+
+	width: 22em;
+	height: 22em;
+
+	transition: box-shadow 0.5s ease-out;
+	transition-delay: 0.75s;
+
+	z-index: 1;
+}
+
+/*this after wil handle the delay of the after on hover off*/
+
+.vis9::after{
+	transition-delay: 0.25s;
+}
+
+/*so, there seem to be something from the color, the animation will change the color of the
+text gradually BUT the ending point will be the one from .vis9, so thats why we need
+to repeat it, also */
+.vis9:hover{
+	color: #fff;
+
+	animation: minn 1.5s ease;
+
+}
+
+/* so, this is where we handle the 2 layers, with inset we have an internal shadow
+they kinda of share the delay, so the before has to be shorter than the ::after
+and this will determine also the space between them during the hover*/
+.vis9:hover::before{
+	box-shadow: inset 0 0 0 11em palevioletred;
+	transition-delay: 0.05s;
+
+}
+
+/*so, considering how :after/:before are the same selector here, the inset
+has to be equal amout so they cover each other, */
+.vis9:hover::after{
+	box-shadow: inset 0 0 0 11em purple;
+	transition-delay: 0.5s;
+
+}
+
+@keyframes minn {
+	0% {
+	  color: #d3b7f7;
+	}
+	50% {
+	  color: #50514f;
+	}
+	100% {
+	  color: #fff;
+
+	}
+}
+  
+/* so, */
+
+.vis10{
+  background: transparent;
+
+  color: pink;
+
+  border: none;
+  padding: 1em 3em;
+  position: relative;
+
+}
+
+/* ok so, we want the animated band to start to the left and top, and to have the txt to continue
+be visible after the :before, what is mix-blend-mode ?, which can work with images too
+*/
+.vis10::before{
+  
+  content: '';
+  color: white;
+  width: 1%;
+  height: 100%;
+  background: rgb(182, 25, 182);
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: all 0.8s cubic-bezier(0.7, -0.5, 0.2, 2);
+  mix-blend-mode: multiply;
+}
+
+.vis10:hover:before {
+	color: white;
+  	background: rgb(182, 25, 182);
+  	width: 100%;
+
+  	mix-blend-mode: multiply;
+}
+
+/* so, we start with a box-sizing, the border-box includes in the width/height
+all the padding/margin, in this case not much but, considering the border is animated
+but ot visible we dont use none , we use 0*/
+
+.vis11{
+  border: 0;
+
+  color: rgb(182, 25, 182);
+  background-color: pink;
+
+  position: relative;
+
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+/*this mantains the box sizing on borders for the movement  
+so, we create still invisible coz not hover yet*/
+
+.vis11:before, .vis11:after{
+  box-sizing: inherit;
+  position: absolute;
+  content: '';
+  border: 3px solid transparent;
+  width: 0;
+  height: 0;
+}
+
+
+/*so, we set starting points for the 2 layers we got*/
+
+.vis11::before {
+  top: 0;
+  left: 0;
+}
+
+.vis11::after {
+  bottom: 0;
+  right: 0;
+}
+
+/*with this we have the border being visible  */
+.vis11:hover::before, .vis11:hover::after {
+  width: 100%;
+  height: 100%;
+}
+
+/* while here we start we the before,and in the transition we use the width/height of the
+:before before, we have multiple transitions , we start with a 0.3s of start + 0.3 of delay
+and then the height with 0.8s, its possible to insert a transition delay (here 0.3s) */
+.vis11:hover::before {
+  border-top-color: rgba(161, 19, 161, 0.767);
+  border-right-color: rgba(161, 19, 161, 0.767);
+  transition: width 0.3s ease-out, height 0.3s ease-out 0.3s;
+}
+
+/* here we have...  so, to avoid having the dot of unstarted border we animate it to start
+immediatly when the after starts(?), the last number is the dalay, anyway
+we structure 0.6 and 1s I guess */
+.vis11:hover::after {
+  border-bottom-color: rgba(161, 19, 161, 0.767);
+  border-left-color: rgba(161, 19, 161, 0.767);
+  transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, height 0.3s ease-out 1s;
+}
+
+/* and now for the glow effect, */
+
+.vis12{
+  border: 1px solid;
+  background-color: transparent;
+  color: pink; 
+
+  padding: 1em 3em;
+}
+
+.vis12:hover {
+  color: white;
+  border: 0;
+
+}
+
+/*so box shadow, we have the X / Y blur / spread and color */
+
+.vis12:hover {
+  background-color: pink;
+
+  box-shadow: 10px 10px 99px 6px pink;
+}
+
+
